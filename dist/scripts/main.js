@@ -1,0 +1,1 @@
+$(function(){function n(n){e.html(n)}function t(){return n(0===u.day()?"NO":u.within(Y)===!0?"NO":_.inRange(u.hour(),11,19)?"YES":"NO")}var m=moment("2015-7-1","YYYY MM DD"),o=moment("2015-9-4","YYYY MM DD"),Y=moment.range(m,o),e=$("#output"),u=moment();t()});
