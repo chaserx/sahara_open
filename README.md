@@ -18,6 +18,6 @@ of feature branches and pull-requests.
 
 `gulp lint`
 
-## How to contirbute
+## How to contribute
 
 Pull requests welcome! Please see the [contribution guide](CONTRIBUTING.md).
