@@ -14,9 +14,16 @@ of feature branches and pull-requests.
 
 `gulp build`
 
+If you add bower packages, you may need to run `gulp wiredep` to get bower
+components into index.
+
 ## How to lint
 
 `gulp lint`
+
+## How to deploy to GitHub pages via `gh-pages` branch.
+
+`gulp deploy`
 
 ## How to contribute
 
