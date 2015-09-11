@@ -18,7 +18,8 @@ $(function() {
       // check if within normal working hours
       if (_.inRange(now.hour(), 11, 19)) {
         if (now.holiday()) {
-          return setOutput('MAYBE.<br>It might be a holiday.');
+          var holidays = now.holidays();
+          return setOutput('MAYBE.<br>It might be <br>' + holidays + '.');
         } else {
           return setOutput('YES');
         }
