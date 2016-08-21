@@ -1,6 +1,6 @@
 $(function() {
-  var vacationStart = moment('2015 7 1', 'YYYY MM DD');
-  var vacationEnd = moment('2015 9 4', 'YYYY MM DD');
+  var vacationStart = moment('2016 7 1', 'YYYY MM DD');
+  var vacationEnd = moment('2016 9 4', 'YYYY MM DD');
   var vacationTime = moment.range(vacationStart, vacationEnd);
   var outputTarget = $('#output');
   var now = moment();
@@ -13,7 +13,7 @@ $(function() {
     if (now.day() === 0) { // return no if today is sunday
       return setOutput('NO');
     } else if (now.within(vacationTime)) {
-      return setOutput('NO');
+      return setOutput('Maybe.<br>They might be closed for vacation.');
     } else {
       // check if within normal working hours
       if (_.inRange(now.hour(), 11, 19)) {
