@@ -1,6 +1,6 @@
 $(function() {
   var vacationStart = moment('2016 7 1', 'YYYY MM DD');
-  var vacationEnd = moment('2016 9 4', 'YYYY MM DD');
+  var vacationEnd = moment('2016 9 1', 'YYYY MM DD');
   var vacationTime = moment.range(vacationStart, vacationEnd);
   var outputTarget = $('#output');
   var now = moment();
