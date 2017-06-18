@@ -5,7 +5,8 @@ something fun to help answer if you pick up some shawarma.
 
 ## How to develop
 
-1. run `npm install`
+1. [install yarn](https://yarnpkg.com/en/docs/install)
+1. run `yarn`
 1. run `gulp serve` will start browersync
 1. do the normal [github flow](https://guides.github.com/introduction/flow/)
 of feature branches and pull-requests.
