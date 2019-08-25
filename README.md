@@ -14,6 +14,10 @@ of feature branches and pull-requests.
 
 `npm run prod`
 
+## How to Deploy
+
+Commits to master trigger a GitHub Action that will install dependencies and run `npm run prod` and then push the build folder to the gh-pages branch.
+
 ## How to contribute
 
 Pull requests welcome! Please see the [contribution guide](CONTRIBUTING.md).
