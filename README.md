@@ -6,13 +6,13 @@ something fun to help answer if you can possibly pick up some shawarma.
 ## How to develop
 
 1. run `npm install`
-1. run `npm dev`
+1. run `npm run dev`
 1. do the normal [github flow](https://guides.github.com/introduction/flow/)
 of feature branches and pull-requests.
 
 ## How to build
 
-`npm prod`
+`npm run prod`
 
 ## How to contribute
 
