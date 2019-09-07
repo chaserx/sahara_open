@@ -5,6 +5,7 @@ const webpack = require("webpack");
 const webpackMerge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// NOTE(chaserx): i can't this to work correctly. doesn't seem to pickup the env flag
 const modeConfiguration = env => require(`./build-utils/webpack.${env}.js`)(env);
 
 module.exports = ({ mode } = { mode: "production" }) => {
