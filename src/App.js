@@ -13,6 +13,7 @@ function App() {
 
       <div className="footer">
         <p>Love people. Cook them tasty food.</p>
+        <p><small><a href="https://github.com/chaserx/sahara_open">contributions welcome</a></small></p>
       </div>
     </div>
   );
