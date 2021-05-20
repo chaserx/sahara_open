@@ -8,15 +8,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@master
+      uses: actions/checkout@v2
+      
+    - name: Build
+      run: |
+        npm install
+        npm run prod
 
-    - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@main
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.3
+      with:
+        branch: gh-pages
+        folder: build
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run prod
         CNAME: issaharaopen.com
         COMMIT_EMAIL: chase.southard@gmail.com
         COMMIT_NAME: Chase Southard
