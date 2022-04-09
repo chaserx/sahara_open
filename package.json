@@ -6,7 +6,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "lodash": "^4.17.21",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "moment-holiday": "git+https://github.com/joeldenning/moment-holiday.git#v1.5.2-webpack.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
