@@ -9,8 +9,8 @@ class Restaurant extends Component {
     this.state = {
       now: moment(),
       open: "Is Sahara Open?",
-      vacationStart: moment('2021 5 31', 'YYYY MM DD'),
-      vacationEnd: moment('2021 9 15', 'YYYY MM DD'),
+      vacationStart: moment('2022 6 13', 'YYYY MM DD'),
+      vacationEnd: moment('2022 9 1', 'YYYY MM DD'),
     }
   }
 
