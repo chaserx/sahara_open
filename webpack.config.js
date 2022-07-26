@@ -52,6 +52,7 @@ module.exports = {
       manifest: './public/manifest.json'
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en-gb/)
   ]
 };
