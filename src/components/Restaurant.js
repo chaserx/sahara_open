@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import 'moment-holiday'
-import _ from 'lodash';
-
 class Restaurant extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +49,7 @@ class Restaurant extends Component {
   }
 
   _inWorkingHours = () => {
-    return _.inRange(this.state.now.hour(), 11, 19)
+    return _inRange(this.state.now.hour(), 11, 19)
   }
 
   _isTodayAHoliday = () => {
@@ -68,6 +66,11 @@ class Restaurant extends Component {
     e.innerHTML = input;
     return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
   }
+
+  // Possible replacement for lodash.inRange which could help avoid loading the entire lodash lib just for this range function
+  // https://youmightnotneed.com/lodash#inRange
+  _inRange = (num, rangeStart, rangeEnd = 0) => (rangeStart < num && num < rangeEnd) || (rangeEnd < num && num < rangeStart)
+
 
   render(){
     return (
