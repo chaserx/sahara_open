@@ -2,57 +2,56 @@
 
 const path = require("path");
 const webpack = require("webpack");
-const webpackMerge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// NOTE(chaserx): i can't this to work correctly. doesn't seem to pickup the env flag
-const modeConfiguration = env => require(`./build-utils/webpack.${env}.js`)(env);
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
-module.exports = ({ mode } = { mode: "production" }) => {
-  console.log(`mode is: ${mode}`);
-
-  return webpackMerge(
-    {
-      mode,
-      entry: "./src/index.js",
-      devServer: {
-        hot: true,
-        open: true
+module.exports = {
+  mode: "production",
+  entry: "./src/index.js",
+  devServer: {
+    hot: true,
+    open: true
+  },
+  output: {
+    publicPath: "/",
+    path: path.resolve(__dirname, "build"),
+    filename: "bundled.js"
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
+    ]
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
       },
-      output: {
-        publicPath: "/",
-        path: path.resolve(__dirname, "build"),
-        filename: "bundled.js"
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        exclude: /node_modules/,
+        use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
       },
-      module: {
-        rules: [
-          {
-            test: /\.(js|jsx)$/,
-            exclude: /node_modules/,
-            loader: "babel-loader"
-          },
-          {
-            test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
-            exclude: /node_modules/,
-            use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
-          },
-          {
-            test: /\.(scss|sass|css)$/,
-            use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
-          }
-        ]
-      },
-      plugins: [
-        new HtmlWebpackPlugin({
-          template: "./public/index.html",
-          filename: './index.html',
-          favicon: './public/favicon.ico',
-          manifest: './public/manifest.json'
-        }),
-        new webpack.HotModuleReplacementPlugin(),
-        new MiniCssExtractPlugin()
-      ]
-    },
-    modeConfiguration(mode)
-  );
+      {
+        test: /\.(scss|sass|css)$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      filename: './index.html',
+      favicon: './public/favicon.ico',
+      manifest: './public/manifest.json'
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new MiniCssExtractPlugin()
+  ]
 };
