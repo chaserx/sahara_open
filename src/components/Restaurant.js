@@ -49,7 +49,7 @@ class Restaurant extends Component {
   }
 
   _inWorkingHours = () => {
-    return _inRange(this.state.now.hour(), 11, 19)
+    return this._inRange(this.state.now.hour(), 11, 19)
   }
 
   _isTodayAHoliday = () => {
