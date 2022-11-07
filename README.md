@@ -12,11 +12,11 @@ of feature branches and pull-requests.
 
 ## How to build
 
-`npm run prod`
+`npm run build`
 
 ## How to Deploy
 
-Commits to master trigger a GitHub Action that will install dependencies and run `npm run prod` and then push the build folder to the gh-pages branch.
+Commits to master trigger a GitHub Action that will install dependencies and run `npm run build` and then push the build folder to the gh-pages branch.
 
 ## How to contribute
 
