@@ -1,65 +1,17 @@
 {
-  "name": "sahara",
-  "version": "0.1.0",
+  "name": "sahara_open_vite_vanilla",
   "private": true,
-  "dependencies": {
-    "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
-    "moment": "^2.24.0",
-    "moment-holiday": "git+https://github.com/joeldenning/moment-holiday.git#v1.5.2-webpack.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-scripts": "^5.0.1",
-    "reactstrap": "^8.0.1"
-  },
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "webpack": "webpack",
-    "webpack-dev-server": "webpack-dev-server",
-    "dev": "npm run webpack-dev-server --config ./build-utils/webpack.development.js",
-    "prod": "npm run webpack"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "css-loader": "^6.0.0",
-    "css-minimizer-webpack-plugin": "^4.0.0",
-    "file-loader": "^6.0.0",
-    "html-webpack-plugin": "^5.0.0",
-    "mini-css-extract-plugin": "^2.0.0",
-    "node-sass": "^7.0.1",
-    "react-hot-loader": "^4.12.11",
-    "react-loadable": "^5.5.0",
-    "sass-loader": "^13.0.0",
-    "style-loader": "^1.0.0",
-    "terser-webpack-plugin": "^5.3.3",
-    "url-loader": "^4.0.0",
-    "webpack": "^5.0.0",
-    "webpack-cli": "^4.0.0",
-    "webpack-dev-server": "^4.0.0",
-    "webpack-merge": "^5.0.0"
+    "vite": "^3.2.0"
+  },
+  "dependencies": {
+    "@18f/us-federal-holidays": "^3.0.1"
   }
 }
