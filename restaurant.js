@@ -1,6 +1,6 @@
 // update these dates for when the folks at Sahara are on vacation.
-const vacationStart = new Date('2022-06-13')
-const vacationEnd = new Date('2022-09-01')
+const vacationStart = new Date('2024-06-10')
+const vacationEnd = new Date('2024-09-04')
 
 import { isAHoliday } from '@18f/us-federal-holidays';
 const options = { utc: false};
