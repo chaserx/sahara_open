@@ -13,9 +13,9 @@ function restaurant(element) {
 function _isSaharaOpen() {
   const date = new Date
   
-  if (_isTodaySunday(date)) {
+  if (_isTodaySunday(date)) { // closed on sundays
     return "No."
-  } else if (_isTodayWithinKnownVacation(date)) {
+  } else if (_isTodayWithinKnownVacation(date)) { // is today a known vacation day
     return "Maybe.<br />They might be closed for vacation."
   } else {
     if (_inWorkingHours(date)) { // within working hours
@@ -26,7 +26,8 @@ function _isSaharaOpen() {
       }
     } else {
       return "No."
-    }  }
+    }
+  }
 }
 
 function _isTodaySunday(date) {
@@ -41,7 +42,7 @@ function _inWorkingHours(date) {
   return _inRange(date.getHours(), 11, 19)
 }
 
-function _inRange(num, rangeStart, rangeEnd = 0) {
+function _inRange(num, rangeStart = 0, rangeEnd = 1) {
   return (rangeStart < num && num < rangeEnd) || (rangeEnd < num && num < rangeStart)
 }
 
