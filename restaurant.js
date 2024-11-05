@@ -1,6 +1,6 @@
 // update these dates for when the folks at Sahara are on vacation.
-const vacationStart = new Date('2024-06-10')
-const vacationEnd = new Date('2024-09-04')
+const VACATION_START = new Date('2024-06-10')
+const VACATION_END = new Date('2024-09-04')
 
 import { isAHoliday } from '@18f/us-federal-holidays';
 const options = { utc: false};
@@ -35,7 +35,7 @@ function _isTodaySunday(date) {
 }
 
 function _isTodayWithinKnownVacation(date) {
-  return _inRange(date, vacationStart, vacationEnd)
+  return _inRange(date, VACATION_START, VACATION_END)
 }
 
 function _inWorkingHours(date) {
