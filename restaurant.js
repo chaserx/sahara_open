@@ -18,16 +18,15 @@ function _isSaharaOpen() {
   } else if (_isTodayWithinKnownVacation(date)) {
     return "Maybe.<br />They might be closed for vacation."
   } else {
-    if (_inWorkingHours(date)) {
-      if (_isTodayAHoliday(date)){
+    if (_inWorkingHours(date)) { // within working hours
+      if (isAHoliday(date)){ // is today a federal holiday
         return "Maybe.<br />Today might be a holiday."
       } else {
         return "Yes."
       }
     } else {
       return "No."
-    }
-  }
+    }  }
 }
 
 function _isTodaySunday(date) {
@@ -40,10 +39,6 @@ function _isTodayWithinKnownVacation(date) {
 
 function _inWorkingHours(date) {
   return _inRange(date.getHours(), 11, 19)
-}
-
-function _isTodayAHoliday(date) {
-  return isAHoliday(date, options);
 }
 
 function _inRange(num, rangeStart, rangeEnd = 0) {
