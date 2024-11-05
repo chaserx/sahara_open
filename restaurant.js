@@ -11,15 +11,15 @@ function restaurant(element) {
 }
 
 function _isSaharaOpen() {
-  const date = new Date
+  const now = new Date
   
-  if (_isTodaySunday(date)) { // closed on sundays
+  if (_isTodaySunday(now)) { // closed on sundays
     return "No."
-  } else if (_isTodayWithinKnownVacation(date)) { // is today a known vacation day
+  } else if (_isTodayWithinKnownVacation(now)) { // is today a known vacation day
     return "Maybe.<br />They might be closed for vacation."
   } else {
-    if (_inWorkingHours(date)) { // within working hours
-      if (isAHoliday(date)){ // is today a federal holiday
+    if (_inWorkingHours(now)) { // within working hours
+      if (isAHoliday(now)){ // is today a federal holiday
         return "Maybe.<br />Today might be a holiday."
       } else {
         return "Yes."
