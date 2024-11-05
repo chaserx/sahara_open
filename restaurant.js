@@ -3,7 +3,7 @@ const VACATION_START = new Date('2024-06-10')
 const VACATION_END = new Date('2024-09-04')
 
 import { isAHoliday } from '@18f/us-federal-holidays';
-const options = { utc: false};
+const HOLIDAY_OPTIONS = { utc: false};
 
 function restaurant(element) {
   element.innerHTML = `${_isSaharaOpen()}`
@@ -19,7 +19,7 @@ function _isSaharaOpen() {
     return "Maybe.<br />They might be closed for vacation."
   } else {
     if (_inWorkingHours(now)) { // within working hours
-      if (isAHoliday(now)){ // is today a federal holiday
+      if (isAHoliday(now, HOLIDAY_OPTIONS)){ // is today a federal holiday
         return "Maybe.<br />Today might be a holiday."
       } else {
         return "Yes."
