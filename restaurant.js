@@ -1,11 +1,7 @@
-// update these dates for when the folks at Sahara are on vacation.
-const VACATION_START = new Date('2024-06-10')
-const VACATION_END = new Date('2024-09-04')
-
 import { isAHoliday } from '@18f/us-federal-holidays';
-const HOLIDAY_OPTIONS = { utc: false};
+import { VACATION_CONFIG, HOLIDAY_OPTIONS } from './config';
 
-function restaurant(element) {
+export function restaurant(element) {
   element.innerHTML = `${_isSaharaOpen()}`
   return;
 }
@@ -13,12 +9,12 @@ function restaurant(element) {
 function _isSaharaOpen() {
   const now = new Date
   
-  if (_isTodaySunday(now)) { // closed on sundays
+  if (isSunday(now)) { // closed on sundays
     return "No."
-  } else if (_isTodayWithinKnownVacation(now)) { // is today a known vacation day
+  } else if (isWithinVacation(now)) { // is today a known vacation day
     return "Maybe.<br />They might be closed for vacation."
   } else {
-    if (_inWorkingHours(now)) { // within working hours
+    if (isWithinWorkingHours(now)) { // within working hours
       if (isAHoliday(now, HOLIDAY_OPTIONS)){ // is today a federal holiday
         return "Maybe.<br />Today might be a holiday."
       } else {
@@ -30,20 +26,55 @@ function _isSaharaOpen() {
   }
 }
 
-function _isTodaySunday(date) {
-  return date.getDay() === 0
+/**
+ * @param {Date} date
+ * @returns {boolean}
+ */
+function isSunday(date) {
+  return date.getDay() === 0;
 }
 
-function _isTodayWithinKnownVacation(date) {
-  return _inRange(date, VACATION_START, VACATION_END)
+/**
+ * @param {Date} date
+ * @returns {boolean}
+ */
+function isWithinVacation(date) {
+  return isDateInRange(
+    date,
+    VACATION_CONFIG.START,
+    VACATION_CONFIG.END
+  );
 }
 
-function _inWorkingHours(date) {
-  return _inRange(date.getHours(), 11, 19)
+/**
+ * @param {Date} date
+ * @returns {boolean}
+ */
+function isWithinWorkingHours(date) {
+  return isNumberInRange(
+    date.getHours(),
+    VACATION_CONFIG.WORKING_HOURS.START,
+    VACATION_CONFIG.WORKING_HOURS.END
+  );
 }
 
-function _inRange(num, rangeStart = 0, rangeEnd = 1) {
-  return (rangeStart < num && num < rangeEnd) || (rangeEnd < num && num < rangeStart)
+/**
+ * @param {Date} date
+ * @param {Date} start
+ * @param {Date} end
+ * @returns {boolean}
+ */
+function isDateInRange(date, start, end) {
+  return date >= start && date <= end;
 }
 
-export { restaurant }
+/**
+ * @param {number} value
+ * @param {number} start
+ * @param {number} end
+ * @returns {boolean}
+ */
+function isNumberInRange(value, start, end) {
+  const [min, max] = start <= end ? [start, end] : [end, start];
+  return value >= min && value <= max;
+}
