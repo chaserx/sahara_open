@@ -1,29 +1,42 @@
 import { isAHoliday } from '@18f/us-federal-holidays';
 import { VACATION_CONFIG, HOLIDAY_OPTIONS } from './config';
 
-export function restaurant(element) {
-  element.innerHTML = `${_isSaharaOpen()}`
-  return;
+
+/**
+ * Updates element with restaurant status
+ * @param {HTMLElement} element 
+ * @param {Date} [now=new Date()]
+ */
+export function restaurant(element, now = new Date()) {
+  if (!element) throw new Error('Element is required');
+  
+  const status = isSaharaOpen(now);
+  element.innerHTML = status.message;
 }
 
-function _isSaharaOpen() {
-  const now = new Date
-  
-  if (isSunday(now)) { // closed on sundays
-    return "No."
-  } else if (isWithinVacation(now)) { // is today a known vacation day
-    return "Maybe.<br />They might be closed for vacation."
-  } else {
-    if (isWithinWorkingHours(now)) { // within working hours
-      if (isAHoliday(now, HOLIDAY_OPTIONS)){ // is today a federal holiday
-        return "Maybe.<br />Today might be a holiday."
-      } else {
-        return "Yes."
-      }
-    } else {
-      return "No."
-    }
+/**
+ * Determines if restaurant is open
+ * @param {Date} date 
+ * @returns {RestaurantStatus}
+ */
+function isSaharaOpen(date) {
+  if (isSunday(date)) {
+    return { message: "No.", isOpen: false };
   }
+
+  if (isWithinVacation(date)) {
+    return { message: "Maybe.<br />They might be closed for vacation.", isOpen: false };
+  }
+
+  if (!isWithinWorkingHours(date)) {
+    return { message: "No.", isOpen: false };
+  }
+
+  if (isAHoliday(date, HOLIDAY_OPTIONS)) {
+    return { message: "Maybe.<br />Today might be a holiday.", isOpen: false };
+  }
+
+  return { message: "Yes.", isOpen: true };
 }
 
 /**
