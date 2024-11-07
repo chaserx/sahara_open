@@ -25,7 +25,7 @@ function isSaharaOpen(date) {
   }
 
   if (isWithinVacation(date)) {
-    return { message: "Maybe.<br />They might be closed for vacation.", isOpen: false };
+    return { message: "Maybe.<br>They might be closed for vacation.", isOpen: false };
   }
 
   if (!isWithinWorkingHours(date)) {
@@ -33,7 +33,7 @@ function isSaharaOpen(date) {
   }
 
   if (isAHoliday(date, HOLIDAY_OPTIONS)) {
-    return { message: "Maybe.<br />Today might be a holiday.", isOpen: false };
+    return { message: "Maybe.<br>Today might be a holiday.", isOpen: false };
   }
 
   return { message: "Yes.", isOpen: true };
