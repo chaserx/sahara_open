@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "happy-dom": "^15.10.2",
-    "vite": "^5.4.10"
+    "vite": "^5.4.14"
   },
   "dependencies": {
     "@18f/us-federal-holidays": "^4.0.0",
